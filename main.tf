@@ -35,3 +35,9 @@ resource "azurerm_subnet_nat_gateway_association" "this" {
   subnet_id      = azurerm_subnet.this[0].id
   nat_gateway_id = var.nat_gateway_id
 }
+
+resource "azurerm_subnet_network_security_group_association" "this" {
+  count                     = var.associate_nsg ? 1 : 0
+  subnet_id                 = azurerm_subnet.this[0].id
+  network_security_group_id = var.network_security_group_id
+}

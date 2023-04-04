@@ -65,3 +65,14 @@ variable "nat_gateway_id" {
   description = "(Optional) The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created."
   default     = null
 }
+
+variable "associate_nsg" {
+  type        = bool
+  description = "(Optional) Do you want to associate nsg with subnet"
+  default     = true
+}
+
+variable "network_security_group_id" {
+  type        = string
+  description = "(Required) The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created."
+}
