@@ -3,6 +3,16 @@
 ## How to use it as a module
 
 ```hcl
+module "subnets" {
+  source  = "foss-cafe/subnets/azurerm"
+  version = "1.0.3"
+  resource_group_name       = "terraform-test"
+  virtual_network_name      = "terraform-test"
+  address_prefixes          = ["10.0.1.0/24"]
+  service_endpoints         = ["Microsoft.KeyVault", "Microsoft.ServiceBus", "Microsoft.ContainerRegistry", "Microsoft.EventHub", "Microsoft.Storage"]
+  associate_nat_gateway     = true
+  nat_gateway_id            = "/subscriptions/xxxxx/resourceGroups/terraform-test/providers/Microsoft.Network/natGateways/terraform-test"
+}
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
